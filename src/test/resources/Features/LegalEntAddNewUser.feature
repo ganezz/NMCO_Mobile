@@ -1,7 +1,9 @@
+@secondScreen
 Feature: Validating Add New User screen in NM_CO
 
   Background: User should able to launch App
     Given user opens the App batch2
+
 
 Scenario Outline: Validate Name, mandatory Field with Max 100 characters and special characters are not allowed
   And user in Home screen <testcase>
@@ -62,7 +64,7 @@ Scenario Outline: Validate Country Code, mandatory field with Drop Down
     | TestCase_019 |
     | TestCase_020 |
 
-@retest
+
 Scenario Outline: Validate Mobile Number, mandatory Field with Max and Min are with respect to Country Code
   And user in Home screen <testcase>
   When clicks Register Button

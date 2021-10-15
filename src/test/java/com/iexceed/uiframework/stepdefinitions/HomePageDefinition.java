@@ -1,6 +1,7 @@
 package com.iexceed.uiframework.stepdefinitions;
 
 import com.iexceed.uiframework.core.TestBase;
+import com.iexceed.uiframework.steps.Capabilities;
 import com.iexceed.uiframework.steps.HomePageAction;
 import com.iexceed.uiframework.utilites.readexcel.ExcelHandler;
 import io.cucumber.java.en.Given;
@@ -27,7 +28,7 @@ public class HomePageDefinition extends TestBase {
         errorfree=true;
         deviceConfig = ExcelHandler.getTestDataInMap(props.getProperty("appSheetPath"), props.getProperty("deviceSheetName"),props.getProperty(testcase));
         System.out.println("User Opens Application in "+deviceConfig.get("deviceName").toUpperCase());
-        capabilities.setCapabilities(deviceConfig,props.getProperty("targetCompanyName"),props.getProperty("trustCompanyName"),props.getProperty("trustBtn"),props.getProperty("isResigned"));
+        capabilities.setCapabilities(deviceConfig);
         log.info("\n");
         log.info("User Opens Application in "+deviceConfig.get("deviceName").toUpperCase());
         log.info("Orientation IN : "+deviceConfig.get("orientation").toUpperCase());
@@ -47,13 +48,13 @@ public class HomePageDefinition extends TestBase {
 
 
     @When("clicks English Button")
-    public void click_english() {
+    public void click_english() throws InterruptedException{
         homePageAction.clickEnglishButton();
         System.out.println("Choosing English");
         log.info("Choosing English");
     }
     @When("clicks Arabic Button")
-    public void click_arabic() {
+    public void click_arabic() throws InterruptedException{
         homePageAction.clickArabicButton();
         System.out.println("Choosing Arabic");
         log.info("Choosing Arabic");
@@ -94,7 +95,7 @@ public class HomePageDefinition extends TestBase {
         log.info("User Clicking Continue Button");
     }
     @Given("clicks Cancel")
-    public void click_cancel() {
+    public void click_cancel() throws InterruptedException{
         System.out.println("Clicking Cancel");
         homePageAction.clickCancelbutton();
         log.info("Clicking Cancel");

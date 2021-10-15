@@ -14,7 +14,7 @@ public class LegalEntUserAction {
         this.platform = platform;
     }
 
-    public void isLegalEntityUserDetails() {
+    public void isLegalEntityUserDetails(){
         if (platform.equalsIgnoreCase("ios")){
             iLegalEntUserObject = new iLegalEntUserObjects();
             iLegalEntUserObject.isLegalEntUserDetails();
@@ -25,7 +25,7 @@ public class LegalEntUserAction {
 
     }
 
-    public void clickAddNewButton() {
+    public void clickAddNewButton(){
         if (platform.equalsIgnoreCase("ios")){
             iLegalEntUserObject.clickAddNewButton();
         }else {
@@ -33,7 +33,7 @@ public class LegalEntUserAction {
         }
     }
 
-    public void enterAllUserDetails(Map<String, String> datalist) {
+    public void enterAllUserDetails(Map<String, String> datalist) throws InterruptedException{
         if (platform.equalsIgnoreCase("ios")){
             iLegalEntUserObject.enterAllUserDetails();
         }else {
@@ -128,25 +128,25 @@ public class LegalEntUserAction {
         }
     }
 
-    public void isProperErrorMessageOnUser(String result, String expectedMessage) {
+    public void isProperErrorMessageOnUser( String result, String expectedMessage,String input) {
         if (platform.equalsIgnoreCase("ios")){
             iLegalEntUserObject.isProperErrorMessage();
         }else {
-            legalEntUserObjects.isProperErrorMessageOnUser(result,expectedMessage);
+            legalEntUserObjects.isProperErrorMessageOnUser(result,expectedMessage,input);
         }
     }
-    public void isProperErrorMessageOnEmail(String result, String expectedMessage) {
+    public void isProperErrorMessageOnEmail(String result, String expectedMessage, String input) {
         if (platform.equalsIgnoreCase("ios")){
             iLegalEntUserObject.isProperErrorMessage();
         }else {
-            legalEntUserObjects.isProperErrorMessageOnEmail(result,expectedMessage);
+            legalEntUserObjects.isProperErrorMessageOnEmail(result,expectedMessage,input);
         }
     }
-    public void isProperErrorMessageOnMobile(String result, String expectedMessage) {
+    public void isProperErrorMessageOnMobile(String result, String expectedMessage, String input) {
         if (platform.equalsIgnoreCase("ios")){
             iLegalEntUserObject.isProperErrorMessage();
         }else {
-            legalEntUserObjects.isProperErrorMessageOnMobile(result,expectedMessage);
+            legalEntUserObjects.isProperErrorMessageOnMobile(result,expectedMessage,input);
         }
     }
 

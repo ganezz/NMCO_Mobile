@@ -12,14 +12,14 @@ public class LegalEntUserDefinition {
     LegalEntUserAction legalEntUserAction;
 
     @Then("user will landed on Legal Entity User Details")
-    public void app_will_change_to_dark_theme() {
+    public void app_will_change_to_dark_theme() throws InterruptedException {
         legalEntUserAction = new LegalEntUserAction(deviceConfig.get("platform").toLowerCase());
         legalEntUserAction.isLegalEntityUserDetails();
         System.out.println("User landed on Legal Entity User Details");
     }
 
     @When("clicks + Add A New User button")
-    public void clicks_add_a_new_user_button() {
+    public void clicks_add_a_new_user_button() throws InterruptedException {
         legalEntUserAction.clickAddNewButton();
     }
 
@@ -92,7 +92,7 @@ public class LegalEntUserDefinition {
         legalEntUserAction.isLegalEntityUserDetails();
     }
     @When("enters all details in Add A New User screen")
-    public void enters_all_details_in_add_a_new_user_screen() {
+    public void enters_all_details_in_add_a_new_user_screen() throws InterruptedException {
         legalEntUserAction.enterAllUserDetails(datalist);
     }
 
@@ -109,15 +109,15 @@ public class LegalEntUserDefinition {
 
     @Then("proper error message should display under User Name field")
     public void proper_error_message_should_display_under_user_name() {
-        legalEntUserAction.isProperErrorMessageOnUser(datalist.get("result"),datalist.get("expectedMessage"));
+        legalEntUserAction.isProperErrorMessageOnUser(datalist.get("result"),datalist.get("expectedMessage"),datalist.get("ent.UserName"));
     }
     @Then("proper error message should display under Email field")
     public void proper_error_message_should_display_under_email() {
-        legalEntUserAction.isProperErrorMessageOnEmail(datalist.get("result"),datalist.get("expectedMessage"));
+        legalEntUserAction.isProperErrorMessageOnEmail(datalist.get("result"),datalist.get("expectedMessage"),datalist.get("ent.Email"));
     }
     @Then("proper error message should display under Mobile field")
     public void proper_error_message_should_display_under_mobile() {
-        legalEntUserAction.isProperErrorMessageOnMobile(datalist.get("result"),datalist.get("expectedMessage"));
+        legalEntUserAction.isProperErrorMessageOnMobile(datalist.get("result"),datalist.get("expectedMessage"),datalist.get("ent.MobileNumber"));
     }
     @When("user input invalid Email Address")
     public void user_input_invalid_email_address() {
@@ -147,7 +147,7 @@ public class LegalEntUserDefinition {
         legalEntUserAction.isMessageDisplay();
     }
     @And("user fills all new user details")
-    public void user_fills_all_user_details(){
+    public void user_fills_all_user_details() throws InterruptedException {
         legalEntUserAction.isAddNewScreen();
         legalEntUserAction.enterAllUserDetails(datalist);
         legalEntUserAction.clickConfirmButton();

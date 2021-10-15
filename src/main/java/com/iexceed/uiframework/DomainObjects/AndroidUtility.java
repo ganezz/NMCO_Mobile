@@ -10,10 +10,12 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.List;
 
 import static com.iexceed.uiframework.DomainObjects.ConnectionObjects.driver;
@@ -59,14 +61,16 @@ public class AndroidUtility {
             genericMethods.click(no);
         }
     }
-    public void click(By elm){
+    public void click(By elm) {
+        scrollToElement(elm);
         genericMethods.click(elm);
     }
     public String getText(By elm){
         return genericMethods.getText(elm);
     }
 
-    public void sendKeys(By elm,String text){
+    public void sendKeys(By elm,String text)  {
+        scrollToElement(elm);
         clearText(elm);
         genericMethods.sendKeys(elm,text);
     }
@@ -193,7 +197,7 @@ public class AndroidUtility {
         }
     }
 
-    public void scrollToElement(By elm) throws InterruptedException {
+    public void scrollToElement(By elm) {
         System.out.println(driver.findElements(elm).size());
         while (driver.findElements(elm).size()==0){
             Dimension size =drive.manage().window().getSize();
@@ -297,5 +301,19 @@ public class AndroidUtility {
 
 
     public void selectDropDown(By countryCode, String s) {
+    }
+    public void scrollToElement(String elementName, boolean scrollDown){
+        String listID = ((RemoteWebElement) drive.findElementByAndroidUIAutomator("new UiSelector().className(\"android.widget.ListView\")")).getId();
+        String direction;
+        if (scrollDown) {
+            direction = "down";
+        } else {
+            direction = "up";
+        }
+        HashMap<String, String> scrollObject = new HashMap<String, String>();
+        scrollObject.put("direction", direction);
+        scrollObject.put("element", listID);
+        scrollObject.put("text", elementName);
+        driver.executeScript("mobile: scrollTo", scrollObject);
     }
 }

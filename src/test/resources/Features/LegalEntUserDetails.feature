@@ -1,7 +1,8 @@
+@thirdScreen
 Feature: Validating User Contact Details screen in NM_CO
 
   Background: User should able to launch App
-    Given user opens the App batch2
+    Given user opens the App batch3
 
   Scenario Outline: Validate + Add A New User Button
     And user in Home screen <testcase>
@@ -97,7 +98,7 @@ Feature: Validating User Contact Details screen in NM_CO
       | testcase |
       | TestCase_002 |
 
-      @retest
+
   Scenario Outline: Modify User and check the modified user is listed
     And user in Home screen <testcase>
     When clicks Register Button

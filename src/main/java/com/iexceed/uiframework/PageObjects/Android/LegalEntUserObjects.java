@@ -16,11 +16,13 @@ public class LegalEntUserObjects {
     public By deleteButton = By.xpath("//android.widget.ImageView[@content-desc='Delete Icon']");
     public By cancelButton = By.xpath("//android.view.View[@content-desc='UserContactDetailsView']/android.view.View[2]/android.view.View[1]");
     public By continueButton = By.xpath("//android.view.View[@content-desc='UserContactDetailsView']/android.view.View[2]/android.view.View[2]");
-    public By errorMessage = By.xpath("//android.view.View[@content-desc=\"UserContactDetailsView\"]/android.view.View[3]/android.view.View[1]");
-    public By errorMessageOk = By.xpath("//android.view.View[@content-desc=\"UserContactDetailsView\"]/android.view.View[3]/android.view.View[2]");
+    public By toastMessage = By.xpath("//android.view.View[@content-desc=\"UserContactDetailsView\"]/android.view.View[3]/android.view.View[1]");
+    public By toastMessageOk = By.xpath("//android.view.View[@content-desc=\"UserContactDetailsView\"]/android.view.View[3]/android.view.View[2]");
 
     public By userName = By.xpath("//android.view.View[@content-desc=\"UserContactDetailsView\"]/android.widget.ScrollView/android.view.View/android.widget.EditText[1]");
-    public By errorUserName = By.xpath("//android.view.View[@content-desc=\"UserContactDetailsView\"]/android.widget.ScrollView/android.view.View[3]/android.view.View[2]") ;
+    public By errorMobileno = By.xpath("//android.widget.ScrollView/android.view.View[3]/android.view.View[3]");
+    public By errorMobileNo = By.xpath("//android.view.View[@content-desc=\"UserContactDetailsView\"]/android.widget.ScrollView/android.view.View[2]/android.view.View[2]");
+    public By errorUserName = By.xpath("//android.view.View[@content-desc=\"UserContactDetailsView\"]/android.widget.ScrollView/android.view.View[3]/android.view.View[2]");
     public By emailAddress = By.xpath("//android.view.View[@content-desc=\"UserContactDetailsView\"]/android.widget.ScrollView/android.view.View/android.widget.EditText[2]");
     public By mobileNumber = By.xpath("//android.view.View[@content-desc=\"UserContactDetailsView\"]/android.widget.ScrollView/android.view.View/android.widget.EditText[3]");
     public By countryCode = By.xpath("//android.view.View[@content-desc=\"UserContactDetailsView\"]/android.widget.ScrollView/android.view.View/android.view.View/android.view.View[4]");
@@ -39,11 +41,11 @@ public class LegalEntUserObjects {
     public void isLegalEntUserDetails() {
         androidUtility.waitForVisibility(title);
     }
-    public void clickAddNewButton() {
+    public void clickAddNewButton(){
         androidUtility.click(addNewButton);
     }
 
-    public void enterAllUserDetails(String user, String email, String countrycode, String phone, String phoneMinLenght, String phoneMaxLenght) {
+    public void enterAllUserDetails(String user, String email, String countrycode, String phone, String phoneMinLenght, String phoneMaxLenght){
 
         androidUtility.sendKeys(userName,user);
         androidUtility.sendKeys(emailAddress,email);
@@ -51,7 +53,7 @@ public class LegalEntUserObjects {
         androidUtility.sendKeys(mobileNumber,phone);
     }
 
-    public void clickConfirmButton() {
+    public void clickConfirmButton(){
         androidUtility.click(confirmButton);
     }
 
@@ -63,7 +65,7 @@ public class LegalEntUserObjects {
         }
     }
 
-    public void clickEditButton() {
+    public void clickEditButton(){
         androidUtility.click(editButton);
     }
 
@@ -95,9 +97,9 @@ public class LegalEntUserObjects {
     }
 
     public void isProperErrorMessage() {
-        androidUtility.waitForVisibility(errorMessage);
-        System.out.println(androidUtility.getText(errorMessage));
-        androidUtility.click(errorMessageOk);
+        androidUtility.waitForVisibility(toastMessage);
+        System.out.println(androidUtility.getText(toastMessage));
+        androidUtility.click(toastMessageOk);
     }
 
     public void enterInvalidEmailAddress() {
@@ -110,38 +112,55 @@ public class LegalEntUserObjects {
     public void enterInvalidMobileNumber() {
     }
 
-    public void isProperErrorMessageOnUser(String result, String expectedMessage) {
+    public void isProperErrorMessageOnUser(String result, String expectedMessage, String input) {
         if (result.equalsIgnoreCase("fail")){
             try {
                   androidUtility.waitForVisibility(errorUserName);
             }catch (Exception e){
-                Assert.fail("Test Case Failed");
+                Assert.fail("Test Case Failed ::"+input);
             }
             Assert.assertEquals(expectedMessage,androidUtility.getText(errorUserName));
+        }else{
+            try {
+                androidUtility.waitForVisibility(toastMessage);
+            }catch (Exception e){
+                Assert.fail("Test Case Failed ::"+input);
+            }
         }
     }
 
-    public void isProperErrorMessageOnEmail(String result, String expectedMessage) {
+    public void isProperErrorMessageOnEmail(String result, String expectedMessage, String input) {
         if (result.equalsIgnoreCase("fail")){
             try {
                 androidUtility.waitForVisibility(errorUserName);
             }catch (Exception e){
-                Assert.fail("Test Case Failed");
+                Assert.fail("Test Case Failed ::"+input);
             }
             Assert.assertEquals(expectedMessage, androidUtility.getText(errorUserName));
+        }else{
+            try {
+                androidUtility.waitForVisibility(toastMessage);
+            }catch (Exception e){
+                Assert.fail("Test Case Failed ::"+input);
+            }
         }
     }
 
-    public void isProperErrorMessageOnMobile(String result, String expectedMessage) {
+    public void isProperErrorMessageOnMobile(String result, String expectedMessage, String input) {
 
         if (result.equalsIgnoreCase("fail")){
             try {
-                androidUtility.waitForVisibility(errorUserName);
+                androidUtility.waitForVisibility(errorMobileno);
             }catch (Exception e){
-                Assert.fail("Test Case Failed");
+                Assert.fail("Test Case Failed :"+input);
             }
-            System.out.println(expectedMessage);
-            Assert.assertEquals(expectedMessage,androidUtility.getText(errorUserName));
+            Assert.assertEquals(expectedMessage,androidUtility.getText(errorMobileno));
+        }else{
+            try {
+                androidUtility.waitForVisibility(toastMessage);
+            }catch (Exception e){
+                Assert.fail("Test Case Failed ::"+input);
+            }
         }
     }
 

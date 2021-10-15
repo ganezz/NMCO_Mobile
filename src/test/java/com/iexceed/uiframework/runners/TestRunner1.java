@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/Features/",
         glue = {"com.iexceed.uiframework.stepdefinitions"},
-        tags= "@firstScreen",
+        tags= "@secondScreen",
         //monochrome = true,
         plugin= {"pretty",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
                 "rerun:target/failedrerun.txt"
         }
 )
-public class TestRunner {
+public class TestRunner1 {
 
 
 }

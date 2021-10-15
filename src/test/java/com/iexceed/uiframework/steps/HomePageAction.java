@@ -14,10 +14,10 @@ public class HomePageAction {
     }
 
     public void IsHomePage() throws InterruptedException {
-        if (platform.equalsIgnoreCase("ios")){
+        if (platform.equalsIgnoreCase("ios")) {
             ihomePageObjects = new iHomePageObjects();
             ihomePageObjects.isHomeScreen();
-        }else {
+        } else {
             homePageObjects = new HomePageObjects();
             homePageObjects.isHomePage();
         }
@@ -25,51 +25,54 @@ public class HomePageAction {
     }
 
 
-    public void clickEnglishButton() {
-        if (platform.equalsIgnoreCase("ios")){
+    public void clickEnglishButton() throws InterruptedException {
+        if (platform.equalsIgnoreCase("ios")) {
             ihomePageObjects.clickEnglishButton();
-        }else {
+        } else {
             homePageObjects.clickEnglishButton();
         }
     }
 
-    public void clickArabicButton() {
-        if (platform.equalsIgnoreCase("ios")){
+    public void clickArabicButton() throws InterruptedException {
+        if (platform.equalsIgnoreCase("ios")) {
             ihomePageObjects.clickArabicButton();
-        }else {
+        } else {
             homePageObjects.clickArabicButton();
         }
     }
 
     public void clickRegisterButton(String language) throws InterruptedException {
-        if (platform.equalsIgnoreCase("ios")){
-                ihomePageObjects.clickRegisterButton(language);
-        }else {
+        if (platform.equalsIgnoreCase("ios")) {
+            ihomePageObjects.clickRegisterButton(language);
+        } else {
             homePageObjects.clickRegisterBtn();
         }
     }
 
     public void clickDarkThemeButton() throws InterruptedException {
-        if (platform.equalsIgnoreCase("ios")){
+        if (platform.equalsIgnoreCase("ios")) {
             ihomePageObjects.clickDarkModeButton();
-        }else {
+        } else {
             homePageObjects.clickDarkModeButton();
         }
     }
 
     public void clickContinueButton() throws InterruptedException {
-        if (platform.equalsIgnoreCase("ios")){
+        if (platform.equalsIgnoreCase("ios")) {
             ihomePageObjects.clickContinueBtn();
-        }else {
+        } else {
             homePageObjects.clickContinueBtn();
         }
 
     }
-    public void clickCancelbutton() {
+
+    public void clickCancelbutton() throws InterruptedException {
         if (platform.equalsIgnoreCase("ios")) {
             ihomePageObjects.clickCancelBtn();
-        }else {
+        } else {
             homePageObjects.clickCancelBtn();
         }
     }
+
+
 }

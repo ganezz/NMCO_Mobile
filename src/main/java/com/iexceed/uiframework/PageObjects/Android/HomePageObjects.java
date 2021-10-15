@@ -1,11 +1,7 @@
 package com.iexceed.uiframework.PageObjects.Android;
 
 import com.iexceed.uiframework.DomainObjects.AndroidUtility;
-import com.iexceed.uiframework.appium.GenericMethods;
-import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
-
-import static com.iexceed.uiframework.DomainObjects.ConnectionObjects.driver;
 
 public class HomePageObjects {
 
@@ -35,13 +31,13 @@ public class HomePageObjects {
 
     }
 
-    public void clickContinueBtn() {
+    public void clickContinueBtn() throws InterruptedException {
         androidUtility.waitForVisibility(continueBtn);
         androidUtility.click(continueBtn);
     }
 
 
-    public void clickCancelBtn() {
+    public void clickCancelBtn() throws InterruptedException {
         androidUtility.waitForVisibility(cancelBtn);
         androidUtility.click(cancelBtn);
     }
@@ -53,18 +49,17 @@ public class HomePageObjects {
     }
 
 
-    public void clickDarkModeButton(){
+    public void clickDarkModeButton() throws InterruptedException{
         androidUtility.waitForVisibility(darkthemeBtn);
         androidUtility.click(darkthemeBtn);
     }
-    public void clickArabicButton(){
+    public void clickArabicButton() throws InterruptedException{
         androidUtility.waitForVisibility(ArabicBtn);
         androidUtility.click(ArabicBtn);
     }
-    public void clickEnglishButton(){
+    public void clickEnglishButton() throws InterruptedException{
         androidUtility.waitForVisibility(EnglishBtn);
         androidUtility.click(EnglishBtn);
     }
-
 
 }

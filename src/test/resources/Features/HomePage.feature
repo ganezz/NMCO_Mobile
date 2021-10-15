@@ -1,7 +1,8 @@
+@firstScreen
 Feature: Validating buttons in Home screen of APZ_Retail_ONB
 
   Background: User should able to open App
-    Given user opens the App batch2
+    Given user opens the App batch1
 
   Scenario Outline:  Validate Register button
     And user in Home screen <testcase>
