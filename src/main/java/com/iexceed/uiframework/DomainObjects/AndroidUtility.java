@@ -258,8 +258,6 @@ public class AndroidUtility {
     public boolean checkListContainsValue(By list,String key) throws InterruptedException {
         boolean isClicked = false;
         List<WebElement> lists = drive.findElements(list);
-
-
         for (WebElement target : lists) {
             try {
                 System.out.println(target.getAttribute("text"));

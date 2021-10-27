@@ -6,23 +6,22 @@ import io.cucumber.testng.CucumberOptions;
 import org.junit.runner.RunWith;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
-import static com.iexceed.uiframework.stepdefinitions.HomePageDefinition.deviceName;
 
+import static com.iexceed.uiframework.stepdefinitions.HomePageDefinition.deviceName;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/Features/HomePage.feature",
+        features = "src/test/resources/Features/LegalEntUserDetails.feature",
         glue = {"com.iexceed.uiframework.stepdefinitions"},
         //tags= "@firstScreen",
         monochrome = true,
         plugin= {"pretty",
-                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "json:target/jsonReports/cucumber-reports.json","html:target/cucumber-ui-reports.html",
                 "rerun:target/failedrerun.txt"
         }
 )
-public class TestRunner  extends AbstractTestNGCucumberTests {
-
+public class TestRunner2 extends AbstractTestNGCucumberTests {
         @BeforeTest
         @Parameters({ "device" })
         public void beforeTest(String device) {
@@ -30,6 +29,4 @@ public class TestRunner  extends AbstractTestNGCucumberTests {
                 deviceName = device;
 
         }
-
 }
-

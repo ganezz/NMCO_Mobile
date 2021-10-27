@@ -8,6 +8,9 @@ import org.openqa.selenium.TakesScreenshot;
 import static com.iexceed.uiframework.DomainObjects.ConnectionObjects.driver;
 
 public class Hooks {
+
+
+
     @AfterStep
     public void addScreenshot(Scenario scenario){
         //validate if scenario has failed

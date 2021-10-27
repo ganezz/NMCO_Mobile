@@ -12,11 +12,10 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Map;
 
-import static com.iexceed.uiframework.DomainObjects.ConnectionObjects.errorfree;
-
 public class HomePageDefinition extends TestBase {
     HomePageAction homePageAction;
     public static Map<String, String> datalist;
+    public static String deviceName = "";
     Capabilities capabilities;
     public static Map<String, String> deviceConfig;
     public static Logger log = LogManager.getLogger(HomePageDefinition.class);
@@ -25,10 +24,11 @@ public class HomePageDefinition extends TestBase {
     @Given("user opens the App (.+)$")
     public void user_open_the_app_in_device(String testcase) throws Exception {
         capabilities = new Capabilities();
-        errorfree=true;
-        deviceConfig = ExcelHandler.getTestDataInMap(props.getProperty("appSheetPath"), props.getProperty("deviceSheetName"),props.getProperty(testcase));
+        System.out.println("Device Name"+deviceName);
+        deviceConfig = ExcelHandler.getTestDataInMap(props.getProperty("appSheetPath"), props.getProperty("deviceSheetName"),deviceName);
         System.out.println("User Opens Application in "+deviceConfig.get("deviceName").toUpperCase());
-        capabilities.setCapabilities(deviceConfig);
+        capabilities.setCapabilities(deviceConfig,"");
+
         log.info("\n");
         log.info("User Opens Application in "+deviceConfig.get("deviceName").toUpperCase());
         log.info("Orientation IN : "+deviceConfig.get("orientation").toUpperCase());
